@@ -3,36 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Scientific Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="calculator">
-    <input type="text" class="calculator-screen" value="0" disabled />
-    <div class="calculator-keys">
-        <button type="button" class="operator" value="+">+</button>
-        <button type="button" class="operator" value="-">-</button>
-        <button type="button" class="operator" value="*">×</button>
-        <button type="button" class="operator" value="/">÷</button>
+<div class="calculator-container">
+    <div class="mode-switcher">
+        <span>Basic</span>
+        <label class="switch">
+            <input type="checkbox" id="mode-toggle">
+            <span class="slider"></span>
+        </label>
+        <span>Scientific</span>
+    </div>
 
-        <button type="button" value="7">7</button>
-        <button type="button" value="8">8</button>
-        <button type="button" value="9">9</button>
+    <div class="calculator" id="calculator">
+        <input type="text" class="calculator-screen" value="0" disabled />
+        <div class="calculator-keys">
+            <!-- Scientific Functions - Initially Hidden -->
+            <button type="button" class="operator scientific" value="sqrt">√</button>
+            <button type="button" class="operator scientific" value="^">x^y</button>
+            <button type="button" class="operator scientific" value="exp">e^x</button>
+            <button type="button" class="operator scientific" value="log">log</button>
+            <button type="button" class="operator scientific" value="sin">sin</button>
+            <button type="button" class="operator scientific" value="cos">cos</button>
+            <button type="button" class="operator scientific" value="tan">tan</button>
+            <button type="button" class="operator scientific" value="asin">asin</button>
+            <button type="button" class="operator scientific" value="acos">acos</button>
+            <button type="button" class="operator scientific" value="atan">atan</button>
 
-        <button type="button" value="4">4</button>
-        <button type="button" value="5">5</button>
-        <button type="button" value="6">6</button>
+            <!-- Basic Functions -->
+            <button type="button" class="operator" value="+">+</button>
+            <button type="button" class="operator" value="-">-</button>
+            <button type="button" class="operator" value="*">×</button>
+            <button type="button" class="operator" value="/">÷</button>
 
-        <button type="button" value="1">1</button>
-        <button type="button" value="2">2</button>
-        <button type="button" value="3">3</button>
+            <button type="button" value="7">7</button>
+            <button type="button" value="8">8</button>
+            <button type="button" value="9">9</button>
 
-        <button type="button" value="0">0</button>
-        <button type="button" class="decimal" value=".">.</button>
-        <button type="button" class="all-clear" value="all-clear">AC</button>
+            <button type="button" value="4">4</button>
+            <button type="button" value="5">5</button>
+            <button type="button" value="6">6</button>
 
-        <button type="button" class="equal-sign operator" value="=">=</button>
+            <button type="button" value="1">1</button>
+            <button type="button" value="2">2</button>
+            <button type="button" value="3">3</button>
+
+            <button type="button" value="0">0</button>
+            <button type="button" class="decimal" value=".">.</button>
+            <button type="button" class="all-clear" value="all-clear">AC</button>
+
+            <button type="button" class="equal-sign operator" value="=">=</button>
+        </div>
     </div>
 </div>
 
