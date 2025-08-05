@@ -12,49 +12,52 @@
     <div class="mode-switcher">
         <span>Basic</span>
         <label class="switch">
-            <input type="checkbox" id="mode-toggle">
+            <input type="checkbox" id="mode-toggle" checked>
             <span class="slider"></span>
         </label>
         <span>Scientific</span>
     </div>
 
-    <div class="calculator" id="calculator">
+    <div class="calculator scientific-mode" id="calculator">
         <input type="text" class="calculator-screen" value="0" disabled />
         <div class="calculator-keys">
-            <!-- Scientific Functions - Initially Hidden -->
-            <button type="button" class="operator scientific" value="sqrt">√</button>
-            <button type="button" class="operator scientific" value="^">x^y</button>
-            <button type="button" class="operator scientific" value="exp">e^x</button>
-            <button type="button" class="operator scientific" value="log">log</button>
-            <button type="button" class="operator scientific" value="sin">sin</button>
-            <button type="button" class="operator scientific" value="cos">cos</button>
-            <button type="button" class="operator scientific" value="tan">tan</button>
-            <button type="button" class="operator scientific" value="asin">asin</button>
-            <button type="button" class="operator scientific" value="acos">acos</button>
-            <button type="button" class="operator scientific" value="atan">atan</button>
+            <!-- Row 1: Scientific -->
+            <button type="button" class="operator scientific scientific-row" value="sqrt">√</button>
+            <button type="button" class="operator scientific scientific-row" value="^">x^y</button>
+            <button type="button" class="operator scientific scientific-row" value="sin">sin</button>
+            <button type="button" class="operator scientific scientific-row" value="cos">cos</button>
+            <button type="button" class="operator scientific scientific-row" value="tan">tan</button>
 
-            <!-- Basic Functions -->
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">-</button>
-            <button type="button" class="operator" value="*">×</button>
-            <button type="button" class="operator" value="/">÷</button>
+            <!-- Row 2: Scientific -->
+            <button type="button" class="operator scientific scientific-row" value="log">log</button>
+            <button type="button" class="operator scientific scientific-row" value="exp">e^x</button>
+            <button type="button" class="operator scientific scientific-row" value="asin">asin</button>
+            <button type="button" class="operator scientific scientific-row" value="acos">acos</button>
+            <button type="button" class="operator scientific scientific-row" value="atan">atan</button>
 
+            <!-- Row 3 -->
             <button type="button" value="7">7</button>
             <button type="button" value="8">8</button>
             <button type="button" value="9">9</button>
-
+            <button type="button" class="operator" value="+">+</button>
+            <button type="button" class="operator" value="-">-</button>
+            
+            <!-- Row 4 -->
             <button type="button" value="4">4</button>
             <button type="button" value="5">5</button>
             <button type="button" value="6">6</button>
-
+            <button type="button" class="operator" value="*">×</button>
+            <button type="button" class="operator" value="/">÷</button>
+            
+            <!-- Row 5 -->
             <button type="button" value="1">1</button>
             <button type="button" value="2">2</button>
             <button type="button" value="3">3</button>
-
             <button type="button" value="0">0</button>
             <button type="button" class="decimal" value=".">.</button>
+            
+            <!-- Row 6 -->
             <button type="button" class="all-clear" value="all-clear">AC</button>
-
             <button type="button" class="equal-sign operator" value="=">=</button>
         </div>
     </div>
