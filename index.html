@@ -3,64 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scientific Calculator</title>
+    <title>Engineering Web App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="calculator-container">
-    <div class="mode-switcher">
-        <span>Basic</span>
-        <label class="switch">
-            <input type="checkbox" id="mode-toggle" checked>
-            <span class="slider"></span>
-        </label>
-        <span>Scientific</span>
-    </div>
+<div class="main-container">
+    <!-- NEW: Main App Navigation -->
+    <nav class="app-tabs">
+        <div class="app-tab-link active" onclick="openApp(event, 'calculator-app')">Scientific Calculator</div>
+        <div class="app-tab-link" onclick="openApp(event, 'converters-app')">Modular Converters</div>
+    </nav>
 
-    <div class="calculator scientific-mode" id="calculator">
-        <input type="text" class="calculator-screen" value="0" disabled />
-        <div class="calculator-keys">
-            <!-- Row 1: Scientific -->
-            <button type="button" class="operator scientific scientific-row" value="sqrt">√</button>
-            <button type="button" class="operator scientific scientific-row" value="^">x^y</button>
-            <button type="button" class="operator scientific scientific-row" value="sin">sin</button>
-            <button type="button" class="operator scientific scientific-row" value="cos">cos</button>
-            <button type="button" class="operator scientific scientific-row" value="tan">tan</button>
-
-            <!-- Row 2: Scientific -->
-            <button type="button" class="operator scientific scientific-row" value="log">log</button>
-            <button type="button" class="operator scientific scientific-row" value="exp">e^x</button>
-            <button type="button" class="operator scientific scientific-row" value="asin">asin</button>
-            <button type="button" class="operator scientific scientific-row" value="acos">acos</button>
-            <button type="button" class="operator scientific scientific-row" value="atan">atan</button>
-
-            <!-- Row 3 -->
-            <button type="button" value="7">7</button>
-            <button type="button" value="8">8</button>
-            <button type="button" value="9">9</button>
-            <button type="button" class="operator" value="+">+</button>
-            <button type="button" class="operator" value="-">-</button>
-            
-            <!-- Row 4 -->
-            <button type="button" value="4">4</button>
-            <button type="button" value="5">5</button>
-            <button type="button" value="6">6</button>
-            <button type="button" class="operator" value="*">×</button>
-            <button type="button" class="operator" value="/">÷</button>
-            
-            <!-- Row 5 -->
-            <button type="button" value="1">1</button>
-            <button type="button" value="2">2</button>
-            <button type="button" value="3">3</button>
-            <button type="button" value="0">0</button>
-            <button type="button" class="decimal" value=".">.</button>
-            
-            <!-- Row 6 -->
-            <button type="button" class="all-clear" value="all-clear">AC</button>
-            <button type="button" class="equal-sign operator" value="=">=</button>
+    <!-- App Content Area -->
+    <main class="app-content">
+        <!-- ============================================= -->
+        <!-- == SCIENTIFIC CALCULATOR APP (from before) == -->
+        <!-- ============================================= -->
+        <div id="calculator-app" class="app-page active">
+            <div class="calculator scientific-mode" id="calculator">
+                <input type="text" class="calculator-screen" value="0" disabled />
+                <div class="calculator-keys">
+                    <!-- Scientific Rows -->
+                    <button type="button" class="operator scientific" value="sqrt">√</button>
+                    <button type="button" class="operator scientific" value="^">x^y</button>
+                    <button type="button" class="operator scientific" value="sin">sin</button>
+                    <button type="button" class="operator scientific" value="cos">cos</button>
+                    <button type="button" class="operator scientific" value="tan">tan</button>
+                    <button type="button" class="operator scientific" value="log">log</button>
+                    <button type="button" class="operator scientific" value="exp">e^x</button>
+                    <button type="button" class="operator scientific" value="asin">asin</button>
+                    <button type="button" class="operator scientific" value="acos">acos</button>
+                    <button type="button" class="operator scientific" value="atan">atan</button>
+                    <!-- Basic Rows -->
+                    <button type="button" value="7">7</button>
+                    <button type="button" value="8">8</button>
+                    <button type="button" value="9">9</button>
+                    <button type="button" class="operator" value="+">+</button>
+                    <button type="button" class="operator" value="-">-</button>
+                    <button type="button" value="4">4</button>
+                    <button type="button" value="5">5</button>
+                    <button type="button" value="6">6</button>
+                    <button type="button" class="operator" value="*">×</button>
+                    <button type="button" class="operator" value="/">÷</button>
+                    <button type="button" value="1">1</button>
+                    <button type="button" value="2">2</button>
+                    <button type="button" value="3">3</button>
+                    <button type="button" value="0">0</button>
+                    <button type="button" class="decimal" value=".">.</button>
+                    <button type="button" class="all-clear" value="all-clear">AC</button>
+                    <button type="button" class="equal-sign operator" value="=">=</button>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <!-- ============================================= -->
+        <!-- ===== MODULAR CONVERTERS APP (the new part) ===== -->
+        <!-- ============================================= -->
+        <div id="converters-app" class="app-page">
+            <div class="converter-container">
+                <nav class="converter-tabs">
+                    <div class="tab-link active" onclick="openConverter(event, 'rpm-speed')">RPM to Speed</div>
+                    <div class="tab-link" onclick="openConverter(event, 'temp')">Temperature</div>
+                    <div class="tab-link" onclick="openConverter(event, 'torque-power')">Torque to Power</div>
+                    <div class="tab-link" onclick="openConverter(event, 'fuel')">Fuel Efficiency</div>
+                    <div class="tab-link" onclick="openConverter(event, 'soc')">Voltage to SOC</div>
+                    <div class="tab-link" onclick="openConverter(event, 'tyre')">Tyre Size</div>
+                </nav>
+                <main class="converter-content">
+                    <div id="rpm-speed" class="converter-page active">
+                        <h2>RPM to Speed Calculator</h2>
+                        <div class="input-group"><label for="rpm">Engine RPM</label><input type="number" id="rpm" placeholder="e.g., 3000" oninput="calculateRpmToSpeed()"></div>
+                        <div class="input-group"><label for="circumference">Tire Circumference (meters)</label><input type="number" id="circumference" placeholder="e.g., 1.9" oninput="calculateRpmToSpeed()"></div>
+                        <div class="input-group"><label for="gearRatio">Gear Ratio</label><input type="number" id="gearRatio" placeholder="e.g., 0.8" oninput="calculateRpmToSpeed()"></div>
+                        <div class="input-group"><label for="finalDrive">Final Drive Ratio</label><input type="number" id="finalDrive" placeholder="e.g., 4.1" oninput="calculateRpmToSpeed()"></div>
+                        <div class="output-display"><p>Calculated Speed: <span id="speed-output">0 km/h</span></p></div>
+                    </div>
+                    <div id="temp" class="converter-page">
+                        <h2>Celsius ↔ Fahrenheit Converter</h2>
+                        <div class="input-group"><label for="celsius">Celsius (°C)</label><input type="number" id="celsius" placeholder="Enter Celsius..." oninput="convertTemp('c')"></div>
+                        <div class="input-group"><label for="fahrenheit">Fahrenheit (°F)</label><input type="number" id="fahrenheit" placeholder="Enter Fahrenheit..." oninput="convertTemp('f')"></div>
+                    </div>
+                    <div id="torque-power" class="converter-page">
+                        <h2>Torque to Power Calculator</h2>
+                        <div class="input-group"><label for="torque">Torque (Nm)</label><input type="number" id="torque" placeholder="e.g., 150" oninput="calculateTorqueToPower()"></div>
+                        <div class="input-group"><label for="power-rpm">Engine RPM</label><input type="number" id="power-rpm" placeholder="e.g., 4000" oninput="calculateTorqueToPower()"></div>
+                        <div class="output-display"><p>Power (kW): <span id="power-kw-output">0</span></p><p style="margin-top: 10px;">Power (HP): <span id="power-hp-output">0</span></p></div>
+                    </div>
+                    <div id="fuel" class="converter-page">
+                        <h2>Fuel Efficiency Converter</h2>
+                        <div class="input-group"><label for="kml">Kilometers per Liter (km/l)</label><input type="number" id="kml" placeholder="Enter km/l..." oninput="convertFuel('kml')"></div>
+                        <div class="input-group"><label for="mpg">Miles per Gallon (mpg)</label><input type="number" id="mpg" placeholder="Enter mpg..." oninput="convertFuel('mpg')"></div>
+                    </div>
+                    <div id="soc" class="converter-page">
+                        <h2>Voltage to SOC (Li-ion) Estimator</h2>
+                        <div class="input-group"><label for="voltage">Cell Voltage (3.0V - 4.2V)</label><input type="number" id="voltage" placeholder="e.g., 3.7" oninput="calculateSOC()"></div>
+                        <div class="output-display"><p>Estimated State of Charge: <span id="soc-output">~0%</span></p></div>
+                    </div>
+                    <div id="tyre" class="converter-page">
+                        <h2>Tyre Size to Diameter Calculator</h2>
+                        <div class="input-group"><label for="tyre-size">Tyre Size (e.g., 205/55-16)</label><input type="text" id="tyre-size" placeholder="Width/AspectRatio-RimSize" oninput="calculateTyreDiameter()"></div>
+                        <div class="output-display"><p>Overall Diameter: <span id="tyre-diameter-output">0 mm</span></p></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </main>
 </div>
 
 <script src="script.js"></script>
