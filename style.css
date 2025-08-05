@@ -1,98 +1,93 @@
-/* General Body Styles */
+/* --- General Styling & App Structure --- */
+:root {
+    --primary-bg: #f2f2f2;
+    --secondary-bg: #ffffff;
+    --text-color: #333;
+    --accent-color: #007bff;
+    --border-color: #ddd;
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 body {
-    background-color: #f2f2f2;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--primary-bg);
+    margin: 0;
+    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    padding: 20px 0;
 }
 
-.calculator-container {
+.main-container {
+    width: 100%;
+    max-width: 650px;
+    background: var(--secondary-bg);
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+/* --- Main App Navigation --- */
+.app-tabs {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    background-color: #343a40;
 }
 
-/* Mode Switcher Styles */
-.mode-switcher {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    font-size: 1rem;
-    color: #555;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin: 0 10px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
+.app-tab-link {
+    padding: 15px 25px;
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
+    font-weight: 500;
+    color: #f8f9fa;
+    transition: all 0.3s ease;
+    text-align: center;
+    border-bottom: 3px solid transparent;
 }
 
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
+.app-tab-link:hover {
+    background-color: #495057;
 }
 
-input:checked + .slider {
-    background-color: #2dca73;
+.app-tab-link.active {
+    color: #ffffff;
+    background-color: #007bff;
 }
 
-input:checked + .slider:before {
-    transform: translateX(26px);
+.app-page {
+    display: none;
+    padding: 25px;
 }
 
-/* Calculator Styles */
+.app-page.active {
+    display: block;
+}
+
+
+/* --- Scientific Calculator Styles (Scoped) --- */
 .calculator {
     border-radius: 10px;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15), 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
-    width: 400px;
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px; /* Max-width for calculator */
+    margin: auto; /* Center calculator within its page */
 }
 
 .calculator-screen {
     background-color: #222;
     color: #fff;
-    font-size: 2.8rem; /* Slightly larger font for better proportion */
+    font-size: 2.8rem;
     width: 100%;
     border: none;
     padding: 1.5rem 1rem;
     text-align: right;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    box-sizing: border-box;
 }
 
 .calculator-keys {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5-column layout */
+    grid-template-columns: repeat(5, 1fr);
     grid-gap: 1px;
     background-color: #999;
     border-bottom-left-radius: 10px;
@@ -100,70 +95,42 @@ input:checked + .slider:before {
     overflow: hidden;
 }
 
-/* Button Styles */
-button {
+.calculator-keys button {
     background-color: #e0e0e0;
     border: none;
-    font-size: 1.2rem; /* Adjusted font size for 5 columns */
-    padding: 1.5rem 0; /* Taller buttons for better proportions */
+    font-size: 1.2rem;
+    padding: 1.5rem 0;
     cursor: pointer;
     transition: background-color 0.2s;
     text-align: center;
 }
 
-button:hover {
-    background-color: #d4d4d2;
-}
+.calculator-keys button:hover { background-color: #d4d4d2; }
+.calculator-keys .operator { background-color: #f5923e; color: white; }
+.calculator-keys .operator:hover { background-color: #e8832a; }
+.calculator-keys .all-clear { background-color: #ed5454; color: white; grid-column: 1 / span 3; }
+.calculator-keys .all-clear:hover { background-color: #e04444; }
+.calculator-keys .equal-sign { background-color: #2dca73; grid-column: 4 / span 2; }
+.calculator-keys .equal-sign:hover { background-color: #27ad60; }
+.calculator-keys .scientific { background-color: #6c757d; color: white; }
+.calculator-keys .scientific:hover { background-color: #5a6268; }
 
-.operator {
-    background-color: #f5923e;
-    color: white;
-}
 
-.operator:hover {
-    background-color: #e8832a;
-}
+/* --- Modular Converter Styles (Scoped) --- */
+.converter-container { width: 100%; }
+.converter-tabs { display: flex; background-color: #e9ecef; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tab-link { padding: 15px 20px; cursor: pointer; border-bottom: 3px solid transparent; font-weight: 500; transition: all 0.3s ease; white-space: nowrap; }
+.tab-link:hover { background-color: #e2e6ea; }
+.tab-link.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
 
-.all-clear {
-    background-color: #ed5454;
-    color: white;
-    grid-column: 1 / span 3; /* AC button spans 3 columns */
-}
+.converter-content { padding: 25px 0 0 0; }
+.converter-page { display: none; }
+.converter-page.active { display: block; }
 
-.all-clear:hover {
-    background-color: #e04444;
-}
-
-.equal-sign {
-    background-color: #2dca73;
-    grid-column: 4 / span 2; /* Equal button spans 2 columns */
-}
-
-.equal-sign:hover {
-    background-color: #27ad60;
-}
-
-/* Scientific Button Styles */
-.scientific {
-    background-color: #6c757d;
-    color: white;
-}
-
-.scientific:hover {
-    background-color: #5a6268;
-}
-
-/* Hide scientific rows by default */
-.scientific-row {
-    display: none;
-}
-
-/* Show scientific rows when in scientific mode */
-.calculator.scientific-mode .scientific-row {
-    display: block;
-}
-
-/* Hide basic number/operator rows when scientific rows are hidden to maintain layout */
-.calculator:not(.scientific-mode) .calculator-keys {
-    grid-template-rows: repeat(4, 1fr);
-}
+.converter-page h2 { margin-top: 0; font-size: 1.5rem; margin-bottom: 20px; }
+.input-group { margin-bottom: 20px; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 500; color: #555; }
+.input-group input { width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 4px; font-size: 1rem; box-sizing: border-box; }
+.output-display { background-color: var(--primary-bg); padding: 15px; border-radius: 4px; border-left: 5px solid var(--accent-color); margin-top: 20px; }
+.output-display p { margin: 0; font-size: 1.1rem; font-weight: bold; }
+.output-display span { font-weight: normal; color: #555; }
